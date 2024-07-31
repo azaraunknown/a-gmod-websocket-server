@@ -12,7 +12,6 @@ This project demonstrates how to integrate MySQL and WebSocket functionalities i
 ## Code Breakdown
 
 - Dependencies and Initialization:
-
 ```lua
 require("mysqloo")
 DBD = DBD or {}
@@ -24,7 +23,6 @@ DBD.DB = --REDACTED
 ```
 
 - Database Connection:
-
 ```lua
 local db = mysqloo.connect(DBD.HOST, DBD.USER, DBD.PASS, DBD.DB, DBD.PORT)
 db.onConnected = function()
@@ -37,7 +35,6 @@ db:connect()
 ```
 
 - Table Creation and Initial Data Retrieval:
-
 ```lua
 local query = db:query("CREATE TABLE IF NOT EXISTS websocket_auth( access_key TEXT )")
 query:start()
@@ -56,7 +53,6 @@ query:start()
 ```
 
 - Access Key Management:
-
 ```lua
 timer.Create("DBD.AccessKey", 300, 0, function()
     local key_length = math.random(100, 160)
@@ -99,7 +95,6 @@ end
    Code Breakdown
 
 - Dependencies and Initialization:
-
 ```lua
 require("gwsockets")
 local server_ip = false -- REDACTED
@@ -110,7 +105,6 @@ GWSVR = GWSVR or {}
 ```
 
 - WebSocket Event Handling:
-
 ```lua
 function socket:onMessage(data)
     local data = util.JSONToTable(data)
@@ -151,7 +145,6 @@ end
 ```
 
 - Open WebSocket Connection:
-
 ```lua
 socket:open()
 ```
@@ -169,7 +162,7 @@ How It Ties Together
 # Usage
 
 1. _Setup_: Ensure that the MySQLOO and GWSockets libraries are installed and properly set up in your Garry's Mod environment.
-2. _Configuration_: Replace the `*--REDACTED*` placeholders in the scripts with your actual database and server details.
+2. _Configuration_: Replace the `--REDACTED` placeholders in the scripts with your actual database and server details.
 3. _Run_: Place the `db.lua` and `socket.lua` scripts in the appropriate directory and run your Garry's Mod server. The scripts will handle the database connection, WebSocket communication, and access key management automatically.
 
 # Contributing
